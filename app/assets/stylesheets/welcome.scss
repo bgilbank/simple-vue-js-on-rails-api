@@ -1,3 +1,31 @@
-// Place all the styles related to the Welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.top {
+  margin-top: 2em;
+}
+.details {
+  margin-top: 2em;
+}
+
+.tasklist {
+  padding-top: 2em;
+}
+
+.task.done {
+  background: lightgreen;
+}
+
+.task.done label {
+  text-decoration: line-through;
+}
+
+.task.todo {
+  background: lightgoldenrodyellow
+}
+
+.description {
+  color: slategray;
+  font-style: italic;
+}
+
+#editor .segment {
+  background: lavender !important;
+}
