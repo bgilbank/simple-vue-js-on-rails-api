@@ -1,4 +1,5 @@
 import Vue from 'vue'
+const Api = require('./api');
 
 document.addEventListener('DOMContentLoaded', () => {
 
