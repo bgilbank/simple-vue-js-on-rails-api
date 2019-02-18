@@ -6,6 +6,16 @@ export function listTasks () {
   })
 }
 
-listTasks().then(function(response) {
-  console.log(response);
-});
+export function createTask (task) {
+  var localTask = task;
+
+  delete localTask.id;
+
+  return axios.post('/tasks.json', localTask)
+    .then(function(response) {
+      return response.data;
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+}
