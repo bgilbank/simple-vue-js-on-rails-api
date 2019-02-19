@@ -90,27 +90,23 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       updateTask: function(event, id){
         event.stopImmediatePropagation();
-      // event.preventDefault(); // stop the page from re-submitting or redirecting, ruins your validations though
-        let task = this.tasks.find(item => item.id == id);
+
+        Api.updateTask(this.task).then(function(response) {
+          app.listTasks();
+          app.clear();
+          app.message = `Task ${response.id} updated,` 
+        })  
         
-        if(task) {
-          task.name = this.task.name;
-          task.description = this.task.description;
-          task.completed = this.task.completed;
-          this.message = `Task ${id} updated,`
-        }
       },
-      deleteTask(event, id){
+      deleteTask: function(event, id){
         event.stopImmediatePropagation();
-
         let taskIndex = this.tasks.findIndex(item => item.id == id);
-
-        if(taskIndex > - 1){
-          this.$delete(this.tasks, taskIndex);
-          this.message = `Task ${id} deleted,`
+        if(taskIndex > -1){
+          Api.deleteTask(id).then(function(response){
+            app.$delete(app.tasks, taskIndex);
+            app.message = `Task ${id} deleted.`
+          });
         }
-
-
       }
     },
     beforeMount() { this.listTasks() }
